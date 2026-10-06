@@ -1,0 +1,1 @@
+# stake-secretary-hub

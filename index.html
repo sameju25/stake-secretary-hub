@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stake Secretary Hub</title>
+  <meta name="theme-color" content="#14304f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Secretary Hub">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="css/style.css">
   <!-- Order matters: app.js defines the App helpers, storage.js the data layer, then each module registers itself. -->
   <script defer src="js/app.js"></script>
@@ -31,5 +36,11 @@
   </aside>
   <main id="view" tabindex="-1"></main>
   <div id="toasts" aria-live="polite"></div>
+  <script>
+    // Offline support: only works on the hosted (https) site, not when opened from a local file.
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
 </body>
 </html>
